@@ -1,0 +1,71 @@
+<h3>Welcome Customer..!!</h3>
+
+
+<!------------------------------------>
+<div class="text-center">
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"></a>
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLinkActive="active"
+              >Check Issues</a
+            >
+            <select class="form-select" aria-label="Default select example" 
+            style="width:300px;">
+              <option selected>Open this select menu</option>
+              <option>Damaged Product</option>
+               <option>Size Issue</option>
+               <option>Warranty Issue</option>
+              <option>Other</option>
+         </select>
+          </li>
+
+
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/issue"
+              routerLinkActive="active"
+              >Register Issue here</a
+            >
+          <div class="form-group" class="d-flex justify-content-left">
+             <button (click)="registerIssue()" class="btn btn-primary">
+              Register Issue
+            </button>
+          </div>
+          </li>
+
+
+          
+
+
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/issue"
+              routerLinkActive="active"
+              >view Issue status</a
+            >
+            <div class="form-group" style="width:300px;" >
+              <input type="text" name="t1" value="Pending" readonly="readonly"/>
+              </div>
+          </li>
+
+        </ul>
+          
+  
+          
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>

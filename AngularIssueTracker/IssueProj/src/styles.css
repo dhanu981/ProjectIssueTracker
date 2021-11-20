@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    background: rgb(12, 11, 11);
+    background-position: center;
+    background-size: cover;
+    background-image: linear-gradient(rgba(151, 153, 163, 0.7),rgba(4,9,30,0.7)),url(D:\JavaMphasis\IssueImages\crm-for-e-commerce-900x412.jpg);
+}
+nav img{
+    width:  120px;
+
+}
+
+/*{
+    margin: 0 ;
+    padding: 0;
+    font-family: 'Poopins',sans-serif;
+}
+body {
+    min-height: 100vh;
+    width: 100%;
+    background: white;
+    background-position: center;
+    background-size: cover;
+    background-image: linear-gradient(rgba(149, 150, 153, 0.7),rgba(8, 13, 37, 0.7)),url(D:\JavaMphasis\IssueImages\crm-for-e-commerce-900x412.jpg);
+}
+nav{
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+}
+nav img{
+     width: 120px;
+}
+.navbar-brand{
+    flex: 1;
+    text-align: right;
+}
+.navbar-brand{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}*/

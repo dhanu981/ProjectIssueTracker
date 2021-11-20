@@ -1,0 +1,13 @@
+<p>solve-issue works!</p>
+<div class="form-group" style="width:500px;">
+    <label for="comment"> <b>SolveIssue:</b></label>
+    <textarea class="form-control" name= "txtissuname" rows="5" id="comment" name="txtissname"  [(ngModel)]="issueDetails.issue_name"></textarea> 
+  </div>
+
+<div class="form-group" class="d-flex justify-content-left"
+    routerLinkActive="active">
+    <button (click)="gotoCompany()" class="btn btn-primary">
+      Submit
+    </button> 
+ 
+</div>

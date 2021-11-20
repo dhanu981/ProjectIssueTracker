@@ -1,0 +1,30 @@
+<p>IssueList works</p>
+<h3>List Of Issues Here:</h3>
+
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-left align-items-left h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h2 class="mb-4 pb-2 pb-md-0 mb-md-5">List Of Issues Here:</h2>
+
+<ul *ngFor="let iss of issues">
+  
+  <li>
+
+      <span
+        >{{ iss.issue_id }}--{{ iss.issue_name }}
+        <button (click)="solveIssue()" class="btn btn-primary">SolveIssue</button>
+         </span
+      >
+
+ </li>
+ 
+</ul> 
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>

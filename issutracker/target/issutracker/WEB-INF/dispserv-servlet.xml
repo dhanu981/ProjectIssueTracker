@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"> 
+	
+	<context:component-scan base-package="com.mph.*"></context:component-scan>
+	<mvc:annotation-driven/>
+	<tx:annotation-driven/>
+	
+	<context:property-placeholder location="classpath:database.properties"/>
+	
+	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+		<property name="prefix" value="/WEB-INF/pages/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${database.driver}"></property>
+		<property name="url" value="${database.url}"></property>
+		<property name="username" value="${database.username}"></property>
+		<property name="password" value="${database.password}"></property>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.mph.entity.Customer</value>
+				<value>com.mph.entity.Company</value>
+				<value>com.mph.entity.CustomerServiceE</value>
+				<value>com.mph.entity.CourierPartner</value>
+				<value>com.mph.entity.Product</value>
+				<value>com.mph.entity.Issue</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="customer" class="com.mph.entity.Customer" />
+	<bean id="company" class="com.mph.entity.Company" />
+	<bean id="customerServiceE" class="com.mph.entity.CustomerServiceE" />
+	<bean id="courierPartner" class="com.mph.entity.CourierPartner" />
+	<bean id="product" class="com.mph.entity.Product" />
+	<bean id="issue" class="com.mph.entity.Issue" />
+	
+	
+	<bean id="companyDao" class="com.mph.dao.CompanyDaoImpl"/>
+	<bean id="courierPartnerDao" class="com.mph.dao.CourierPartnerDaoImpl"/>
+	<bean id="customerServiceDao" class="com.mph.dao.CustomerServiceDaoImpl"/>
+	<bean id="customerDao" class="com.mph.dao.CustomerDaoImpl"/>
+	<bean id="productDao" class="com.mph.dao.ProductDaoImpl"/>
+	<bean id="issueDao" class="com.mph.dao.IssueDaoImpl"/>
+	
+	<bean id="companyService" class="com.mph.service.CompanyServiceImpl"/>
+	<bean id="customerServService" class="com.mph.service.CustomerServServiceImpl"/>
+	<bean id="customerService" class="com.mph.service.CustomerServiceImpl"/>
+	<bean id="courierPartnerService" class="com.mph.service.CourierPartnerServiceImpl"/>
+	<bean id="productService" class="com.mph.service.ProductServiceImpl"/>
+	<bean id="issueService" class="com.mph.service.IssueServiceImpl"/>
+		
+</beans>
+
+
