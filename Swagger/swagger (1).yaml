@@ -1,0 +1,436 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "Issue Tracker System"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:8080"
+basePath: "/issutracker"
+tags:
+- name: "Issue tracker"
+  description: "Everything about your issues"
+  
+- name: "store"
+  description: "Access to Petstore orders"
+- name: "user"
+  description: "Operations about user"
+  externalDocs:
+    description: "Find out more about our store"
+    url: "http://swagger.io"
+schemes:
+- "http"
+paths:
+  /customerapi/allcust:
+    get:
+      tags:
+        - customer-controller
+      summary: allCustomer
+      operationId: allCustomerUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Customer'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /customerapi/createCustomer:
+    post:
+      tags:
+        - customer-controller
+      summary: createCustomer
+      operationId: createCustomerUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: customer
+          description: customer
+          required: true
+          schema:
+            $ref: '#/definitions/Customer'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Customer'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /customerapi/deleteCustomer/{id}:
+    delete:
+      tags:
+        - customer-controller
+      summary: deleteCustomer
+      operationId: deleteCustomerUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Customer'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /customerapi/getCustomer/{id}:
+    get:
+      tags:
+        - customer-controller
+      summary: getCustomerById
+      operationId: getCustomerByIdUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Customer'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /customerapi/updateCustomer:
+    put:
+      tags:
+        - customer-controller
+      summary: updateCustomer
+      operationId: updateCustomerUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: customer
+          description: customer
+          required: true
+          schema:
+            $ref: '#/definitions/Customer'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Customer'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /customerserv/allcse:
+    get:
+      tags:
+        - customer-service-controller
+      summary: allCustomerServiceE
+      operationId: allCustomerServiceEUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CustomerServiceE'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /customerserv/createCustomerService:
+    post:
+      tags:
+        - customer-service-controller
+      summary: createCustomerServiceE
+      operationId: createCustomerServiceEUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: customerServiceE
+          description: customerServiceE
+          required: true
+          schema:
+            $ref: '#/definitions/CustomerServiceE'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/CustomerServiceE'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /customerserv/deleteCustomerServiceE/{id}:
+    delete:
+      tags:
+        - customer-service-controller
+      summary: deleteCustomerServiceE
+      operationId: deleteCustomerServiceEUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CustomerServiceE'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /issueapi/allissue:
+    get:
+      tags:
+        - issue-controller
+      summary: allIssue
+      operationId: allIssueUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Issue'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /issueapi/createIssue:
+    post:
+      tags:
+        - issue-controller
+      summary: createIssue
+      operationId: createIssueUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: issue
+          description: issue
+          required: true
+          schema:
+            $ref: '#/definitions/Issue'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Issue'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /issueapi/deleteIssue/{id}:
+    delete:
+      tags:
+        - issue-controller
+      summary: deleteIssue
+      operationId: deleteIssueUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Issue'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /issueapi/getIssue/{id}:
+    get:
+      tags:
+        - issue-controller
+      summary: getIssueById
+      operationId: getIssueByIdUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Issue'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /issueapi/updateIssue:
+    put:
+      tags:
+        - issue-controller
+      summary: updateCustomer
+      operationId: updateCustomerUsingPUT_1
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: issue
+          description: issue
+          required: true
+          schema:
+            $ref: '#/definitions/Issue'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Issue'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+definitions:
+  Customer:
+    type: object
+    properties:
+      cust_address:
+        type: string
+      cust_email:
+        type: string
+      cust_gender:
+        type: string
+      cust_id:
+        type: integer
+        format: int32
+      cust_mobile:
+        type: integer
+        format: int32
+      cust_name:
+        type: string
+      cust_password:
+        type: string
+    title: Customer
+  CustomerServiceE:
+    type: object
+    properties:
+      report_issue:
+        type: string
+      ser_id:
+        type: integer
+        format: int64
+      solve_issue:
+        type: string
+      view_issue:
+        type: string
+    title: CustomerServiceE
+  Issue:
+    type: object
+    properties:
+      issue_id:
+        type: integer
+        format: int32
+      issue_name:
+        type: string
+    title: Issue
